@@ -1,0 +1,27 @@
+{
+  "name": "todo-rest-server",
+  "version": "0.0.1",
+  "description": "A REST API server fo a TODO list. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sotocodes/todo-rest-server.git"
+  },
+  "author": "Brahian E. Soto Mercedes <mail@soto.codes> (https://www.soto.codes/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sotocodes/todo-rest-server/issues"
+  },
+  "homepage": "https://github.com/sotocodes/todo-rest-server#readme",
+  "devDependencies": {
+    "prettier": "1.5.3",
+    "restify": "5.1.0"
+  },
+  "dependencies": {
+    "pg": "7.0.3"
+  }
+}
