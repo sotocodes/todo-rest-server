@@ -14,9 +14,14 @@ server.use((req, res, next) => {
  * Get all the todos.
  */
 server.get('/todos', (req, res, next) => {
-  db.query('SELECT * FROM todos', (err, result) => {
-    if (err) return next(err);
-    else {
+  console.log('in /todos');
+  db.query('SELECT * FROM todos ORDER BY todos.id DESC', (err, result) => {
+    console.log('in db.query');
+    if (err) {
+      console.lo(err);
+      return next(err);
+    } else {
+      console.log('no db error');
       res.send(result.rows);
       return next();
     }
