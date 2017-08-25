@@ -11,17 +11,13 @@ server.use((req, res, next) => {
 });
 
 /**
- * Get all the todos.
+ * Get all the to-dos.
  */
 server.get('/todos', (req, res, next) => {
-  console.log('in /todos');
   db.query('SELECT * FROM todos ORDER BY todos.id DESC', (err, result) => {
-    console.log('in db.query');
     if (err) {
-      console.lo(err);
       return next(err);
     } else {
-      console.log('no db error');
       res.send(result.rows);
       return next();
     }
@@ -29,7 +25,7 @@ server.get('/todos', (req, res, next) => {
 });
 
 /**
- * Create a todo.
+ * Create a to-do.
  */
 server.use(restify.plugins.bodyParser());
 server.post('/todo/add', (req, res, next) => {
@@ -45,7 +41,7 @@ server.post('/todo/add', (req, res, next) => {
 });
 
 /**
- * Edit a todo's text.
+ * Edit a to-do's text.
  */
 server.use(restify.plugins.queryParser());
 server.put('/todo/edit', (req, res, next) => {
@@ -62,7 +58,7 @@ server.put('/todo/edit', (req, res, next) => {
 });
 
 /**
- * Toggle a todo.
+ * Toggle a to-do.
  */
 server.put('/todo/toggle/:id', (req, res, next) => {
   let id = req.params.id;
@@ -83,7 +79,19 @@ server.put('/todo/toggle/:id', (req, res, next) => {
 });
 
 /**
- * Delete a todo.
+ * Delete checked to-dos.
+ */
+server.del('/todo/remove/all', (req, res, next) => {
+  console.log('we good');
+  let id = req.params.id;
+  db.query(`DELETE FROM todos WHERE todos.done = true`, (err, result) => {
+    if (err) return next(err);
+    else res.send(200);
+  });
+});
+
+/**
+ * Delete a to-do.
  */
 server.del('/todo/remove/:id', (req, res, next) => {
   let id = req.params.id;
