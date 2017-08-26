@@ -2,7 +2,7 @@ const restify = require('restify');
 const db = require('./db');
 
 const server = restify.createServer();
-
+server.pre(restify.plugins.pre.userAgentConnection());
 /**
  * Get all the to-dos.
  */
