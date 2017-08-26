@@ -58,7 +58,6 @@ server.put('/todo/toggle/:id', (req, res, next) => {
  * Delete checked to-dos.
  */
 server.del('/todo/remove/all', (req, res, next) => {
-  console.log('we good');
   let id = req.params.id;
   db.query(`DELETE FROM todos WHERE todos.done = true`, (err, result) => {
     if (err) return next(err);
